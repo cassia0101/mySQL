@@ -1,0 +1,31 @@
+CREATE TABLE `funcionarios` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nome_completo` VARCHAR(100) NOT NULL,
+    `data_nascimento` DATE,
+    `genero` ENUM('M', 'F', 'Outro'),
+    `email` VARCHAR(100) UNIQUE,
+    `cargo` VARCHAR(50) NOT NULL,
+    `salario` DECIMAL(10, 2),
+    `data_admissao` DATE NOT NULL,
+    `departamento` VARCHAR(50),
+    `cidade` VARCHAR(50),
+    `estado` VARCHAR(2),
+    `cep` VARCHAR(10),
+    `ativo` BOOLEAN DEFAULT TRUE,
+    `data_demissao` DATE,
+    `observacoes` TEXT
+);
+
+INSERT INTO `funcionarios` (`nome_completo`, `data_nascimento`, `genero`, `email`, `cargo`, `salario`, `data_admissao`, `departamento`) VALUES
+('Ana Carolina Souza', '1988-11-05', 'F', 'ana.souza@empresa.com', 'Analista de Sistemas Sênior', 7500.00, '2022-08-15', 'Tecnologia da Informação'),
+('Carlos Alberto Oliveira', '1992-03-20', 'M', 'carlos.oliveira@empresa.com', 'Desenvolvedor Júnior', 3800.50, '2023-01-10', 'Tecnologia da Informação'),
+('Mariana Gonçalves Pereira', '1990-06-28', 'F', 'mariana.pereira@empresa.com', 'Gerente de Projetos', 9200.75, '2021-05-01', 'Gestão de Projetos'),
+('Pedro Henrique Silva', '1997-09-12', 'M', 'pedro.silva@empresa.com', 'Estagiário', 1800.00, '2024-02-20', 'Recursos Humanos'),
+('Laura Martins Costa', '1985-04-30', 'F', 'laura.costa@empresa.com', 'Analista de Marketing', 6200.00, '2020-11-01', 'Marketing'),
+('Ricardo Almeida Santos', '1993-12-25', 'M', 'ricardo.santos@empresa.com', 'Assistente Administrativo', 2500.00, '2023-07-01', 'Administrativo'),
+('Fernanda Oliveira Lima', '1991-07-18', 'F', 'fernanda.lima@empresa.com', 'Designer Gráfico', 4500.00, '2022-03-10', 'Marketing'),
+('Gustavo Pereira Rocha', '1989-01-15', 'M', 'gustavo.rocha@empresa.com', 'Analista Financeiro', 8000.00, '2021-09-01', 'Financeiro');
+
+SELECT * FROM `funcionarios`;
+SELECT `nome_completo`, `cargo`, `salario` FROM `funcionarios` WHERE `departamento` = 'Marketing';
+SELECT COUNT(*) AS total_funcionarios, `departamento` FROM `funcionarios` GROUP BY `departamento`;
